@@ -22,7 +22,7 @@
 					"type":"column2d", "renderAt":"graph","width":1700, "height":800, "dataFormat":"json",
 					"dataSource":{
 						"chart": {
-							"caption":"daily activity graph", "xAxisName":"time, h", "yAxisName":"Activity, men",
+							"caption":"daily activity graph", "xAxisName":"time, h", "yAxisName":"Activity, clicks",
 							"theme":"fint", "numberPrefix":"",
 						},
 						"data": <?php echo $data['data']?>					
