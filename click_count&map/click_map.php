@@ -33,12 +33,19 @@
 	
 	$connect = mysqli_connect($dbloc,$dbusername,$dbpass,$dbname);
 	if (!$connect){
-		echo "ОШИБКА СОЕДИНЕНИЯ<br>";
+		echo "ОШИБКА СОЕДИНЕНИЯ";
 		exit;
 	}
 	echo "СОЕДИНЕНИЕ УСТАНОВЛЕНО<br>";
 	
 	$result = mysqli_query($connect, "SELECT coordX,coordY FROM clickcoords_table");
+	if(!$result){
+		echo "НЕ УДАЛОСЬ СОБРАТЬ ДАННЫЕ ИЗ БАЗЫ ДАННЫХ. ПРОВЕРЬТЕ НЕ ПУСТА ЛИ ОНА";
+		exit;
+	}
+	
+	echo "ДАННЫЕ ИЗ БАЗЫ ДАННЫХ СОБРАНЫ";
+	
 	$rows = mysqli_num_rows($result);
 	for ($i = 0; $i < $rows; ++$i){
 		$row = mysqli_fetch_row($result);

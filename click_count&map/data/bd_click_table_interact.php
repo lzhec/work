@@ -8,16 +8,18 @@
 	
 	$connect = mysqli_connect($dbloc,$dbusername,$dbpass,$dbname);
 	if (!$connect){
-		echo "ОШИБКА СОЕДИНЕНИЯ С БАЗОЙ ДАННЫХ<br>";
+		echo "ОШИБКА СОЕДИНЕНИЯ С БАЗОЙ ДАННЫХ";
 		exit;
 	}
 	echo "СОЕДИНЕНИЕ С БАЗОЙ ДАННЫХ УСТАНОВЛЕНО<br>";
 	
 	$result = mysqli_query($connect, "SELECT id,count FROM click_table WHERE ref='$ref'");
 	if(!$result){
-		echo "НЕ УДАЛОСЬ СОБРАТЬ ДАННЫЕ ИЗ БАЗЫ ДАННЫХ. ПРОВЕРЬТЕБ НЕ ПУСТА ЛИ ОНА<br>";
+		echo "НЕ УДАЛОСЬ СОБРАТЬ ДАННЫЕ ИЗ БАЗЫ ДАННЫХ. ПРОВЕРЬТЕ НЕ ПУСТА ЛИ ОНА";
 		exit;
 	}
+	
+	echo "ДАННЫЕ ИЗ БАЗЫ ДАННЫХ СОБРАНЫ<br>";
 	
 	while($row = mysqli_fetch_array($result)){
 		$id = $row['id'];
