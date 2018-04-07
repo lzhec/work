@@ -29,14 +29,14 @@
 	if ($id != null){
 		$sql = mysqli_query($connect, "UPDATE click_table SET count=$count WHERE id=$id");
 		if (!$sql){
-			echo "ИНФОРМАЦИЯ НЕ ОБНОВЛЕНА";
+			echo "ИНФОРМАЦИЯ НЕ ОБНОВЛЕНА. ПРОВЕРЬТЕ ПРАВИЛЬНОСТЬ ДАННЫХ";
 			exit;
 		}
 		echo "ИНФОРМАЦИЯ В БАЗЕ ДАННЫХ ОБНОВЛЕНА";
 	} else{
 		$sql = mysqli_query($connect, "INSERT INTO click_table (ref,count) VALUES ('$ref',1)");
 		if (!$sql){
-			echo "ИНФОРМАЦИЯ НЕ ЗАНЕСЕНА";
+			echo "НЕ УДАЛОСЬ ЗАПИСАТЬ ДАННЫЕ В БАЗУ ДАННЫХ. ПРОВЕРЬТЕ ПРАВИЛЬНОСТЬ ДАННЫХ";
 			exit;
 		}
 		echo "ИНФОРМАЦИЯ ЗАНЕСЕНА В БАЗУ ДАННЫХ";

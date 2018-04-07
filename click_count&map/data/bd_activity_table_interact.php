@@ -28,8 +28,11 @@
 	
 	if ($id !== null){
 		$sql = mysqli_query($connect, "UPDATE activity_table SET count=$count WHERE id=$id");
-		
-	
+		if (!$sql){
+			echo "ИНФОРМАЦИЯ НЕ ОБНОВЛЕНА. ПРОВЕРЬТЕ ПРАВИЛЬНОСТЬ ДАННЫХ";
+			exit;
+		}		
+		echo "ИНФОРМАЦИЯ В БАЗЕ ДАННЫХ ОБНОВЛЕНА";
 	} else{
 		$sql = mysqli_query($connect, "INSERT INTO activity_table (hour,count) VALUES ($hour,1)");
 		if(!$sql){
