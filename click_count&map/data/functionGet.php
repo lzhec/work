@@ -23,6 +23,7 @@
 		
 		while($row = mysqli_fetch_object($result)){
 			$get['data'][] = $row;
+			sort($get['data']);
 		}
 		
 		$get['data'] = json_encode($get['data']);
