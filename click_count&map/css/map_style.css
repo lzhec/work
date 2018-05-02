@@ -23,6 +23,19 @@ div{
 	display: inline;
 }
 
+#switch{
+	position: absolute;
+	border-radius: 10px;
+	background-color: #AFEEEE;
+	width:150px;
+	left:1700px;
+	top:10px;
+}
+
+#switchref{
+	text-decoration: none;
+}
+
 
 
 

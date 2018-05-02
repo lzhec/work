@@ -1,8 +1,10 @@
 <?php
-	header ('Content-Type: text/html; charset=utf-8');
-	require "data/functionGet.php";
-	
-	$data = get($connect);
+header ('Content-Type: text/html; charset=utf-8');
+require_once 'data/config.php';
+require_once "data/functions.php";
+
+connect(HOST,USER,PASS,DATABASE);
+$data = get($connect);
 ?>
 
 <!DOCTYPE html>
@@ -12,7 +14,7 @@
 	<head>
 		<meta charset="UTF-8"/>
 		<title>Daily Activity Graph</title>
-		
+		<link type="text/css" rel="stylesheet" href="css/graph_style.css">
 		<script type="text/javascript" src="fc/fusioncharts.js"></script> <!--библиотека fusioncharts для построения графиков-->
 		<script type="text/javascript" src="fc/fusioncharts.charts.js"></script> <!--непосредственное отображение диаграмм на экран-->
 		<script type="text/javascript" src="fc/fusioncharts.theme.fint.js"></script> <!--графическая тема оформления из библиотеки-->
@@ -34,7 +36,12 @@
 	</head>
 	
 	<body style="background-color: #AFEEEE">
-		<div style="text-align: center" id="graph"></div>	
+		<div style="text-align: center" id="graph"></div>
+		<button id="switch">
+			<a id="switchref" href="click_map.php">
+				Карта кликов
+			</a>
+		</button>		
 	</body>	
 	
 </html>

@@ -9,7 +9,7 @@ $(document).ready(function(){
 		refname = $(event.currentTarget).text();
 
 		$.get(
-			'data/bd_click_table_interact.php',
+			'data/count.php',
 			{refname: refname}
 		);
 	});
@@ -21,12 +21,12 @@ $(document).ready(function(){
 		hour = (now.getHours() + now.getMinutes()/60).toFixed(2);
 		
 		$.get(
-			'data/bd_clickcoords_table_interact.php',
+			'data/map.php',
 			{coordX: coordX, coordY: coordY}
 		);
 		
 		$.get(
-			'data/bd_activity_table_interact.php',
+			'data/graph.php',
 			{hour: hour}
 		);
 	});

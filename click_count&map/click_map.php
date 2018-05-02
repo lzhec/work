@@ -18,7 +18,12 @@
 				<div><a href="https://meduza.io">meduza</a></div></br>
 				<div>click me</div></br>
 				<div>click me again</div></br>
-				<div>Carrrrrambaaaaaaaaa!</div></br>	
+				<div>Carrrrrambaaaaaaaaa!</div></br>
+				<button id="switch">
+					<a id="switchref" href="daily_activity_graph.php">
+						График суточной активности
+					</a>
+				</button>	
 			</div>	
 		</div>
 	</body>	
@@ -26,40 +31,10 @@
 </html>
 
 <?php
-	$dbloc = "localhost";
-	$dbusername = "root";
-	$dbpass = "Root";
-	$dbname = "click_bd";
-	
-	$connect = mysqli_connect($dbloc,$dbusername,$dbpass,$dbname);
-	if (!$connect){
-		echo "ОШИБКА СОЕДИНЕНИЯ";
-		exit;
-	}
-	echo "СОЕДИНЕНИЕ УСТАНОВЛЕНО<br>";
-	
-	$result = mysqli_query($connect, "SELECT coordX,coordY FROM clickcoords_table");
-	if(!$result){
-		echo "НЕ УДАЛОСЬ СОБРАТЬ ДАННЫЕ ИЗ БАЗЫ ДАННЫХ. ПРОВЕРЬТЕ НЕ ПУСТА ЛИ ОНА";
-		exit;
-	}
-	
-	echo "ДАННЫЕ ИЗ БАЗЫ ДАННЫХ СОБРАНЫ";
-	
-	$rows = mysqli_num_rows($result);
-	for ($i = 0; $i < $rows; ++$i){
-		$row = mysqli_fetch_row($result);
-		$x = $row[0];
-		$y = $row[1];
-		echo("<script type=\"text/javascript\">
-		var canvas = document.getElementById('mapCanvas');
-		var context = canvas.getContext('2d');
-		context.fillStyle = 'red';
-		context.beginPath();
-		context.arc($x,$y,3,0,2*Math.PI);	
-		context.fill();</script>");
-	}
-	
-	mysqli_free_result($result);
-	mysqli_close($connect);
+header ('Content-Type: text/html; charset=utf-8');
+require_once 'data/config.php';
+require_once 'data/functions.php';
+
+connect(HOST,USER,PASS,DATABASE);
+fromMap($connect);
 ?>
