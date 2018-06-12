@@ -15,8 +15,8 @@ $(document).ready(function(){
 	});
 	
 	$('html').click(function(event){	
-		coordX = event.clientX;
-		coordY = event.clientY;
+		coordX = event.clientX + window.pageXOffset;
+		coordY = event.clientY + window.pageYOffset;
 		now = new Date();
 		hour = (now.getHours() + now.getMinutes()/60).toFixed(2);
 		

@@ -16,7 +16,7 @@ $data = get($connect);
 		<title>Daily Activity Graph</title>
 		<link type="text/css" rel="stylesheet" href="css/graph_style.css">
 		<script type="text/javascript" src="fc/fusioncharts.js"></script> <!--библиотека fusioncharts для построения графиков-->
-		<script type="text/javascript" src="fc/fusioncharts.charts.js"></script> <!--непосредственное отображение диаграмм на экран-->
+		<script type="text/javascript" src="fc/fusioncharts.charts.js"></script> <!--непосредственное отображение диаграмм на экране-->
 		<script type="text/javascript" src="fc/fusioncharts.theme.fint.js"></script> <!--графическая тема оформления из библиотеки-->
 		<script>
 			FusionCharts.ready(function(){
