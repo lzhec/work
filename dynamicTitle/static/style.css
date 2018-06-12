@@ -1,0 +1,20 @@
+.sert::after {
+	content: none;
+}
+
+.sert:hover::after {
+	content: attr(title);
+}
+
+.sert:hover::after {
+    content: attr(title); /* Выводим текст */
+    position: absolute; /* Абсолютное позиционирование */
+    left: 2%; top: 2%; /* Положение подсказки */
+    max-width: 300px; 
+    z-index: 1; /* Отображаем подсказку поверх других элементов */
+    background: rgba(255,255,230,0.9); /* Полупрозрачный цвет фона */
+    font-family: Arial, sans-serif; /* Гарнитура шрифта */
+    font-size: 11px; /* Размер текста подсказки */
+    padding: 5px 10px; /* Поля */
+    border: 1px solid #333; /* Параметры рамки */
+   }

@@ -1,0 +1,20 @@
+{
+	"titles": [
+		{
+			"key": "Rapid SSL",
+			"title": "Rapid SSL title"
+		},
+		{
+			"key": "Rapid SSL Widcard",
+			"title": "Rapid SSL Widcard title"
+		},
+		{
+			"key": "Some SSL",
+			"title": "Some SSL title"
+		},
+		{
+			"key": "GeoTrust True BusinessID with EV",
+			"title": "GeoTrust title"
+		}
+	]	
+}
