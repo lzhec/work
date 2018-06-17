@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	{% load staticfiles %}
+	<link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
+	<!--<link rel="stylesheet" href="{%  static 'style.css' %}">-->
+	<script type="text/javascript" src="{% static 'jq/jquery-3.3.1.min.js' %}"></script>
+	<script type="text/javascript" src="{% static 'js/bootstrap.js' %}"></script>
+	<!--<script type="text/javascript" src="{% static 'js/script.js' %}"></script>-->
+</head>
+<body>
+	<div class="site-container">
+		{% include 'header.html' %}
+
+		{% block content %}
+		{% endblock %}
+
+		{% include 'footer.html' %}
+	</div>
+</body>
+</html>

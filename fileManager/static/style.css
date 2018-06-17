@@ -1,0 +1,436 @@
+body {	
+	font-family: 'RobotoSlab-Regular', 'sans-serif' !important;
+}
+
+.site-container {
+	position: absolute;
+	min-width: 100%;
+	min-height: 100%;
+	height: 200%;
+}
+
+.hdr {
+	position: absolute;
+	border-bottom: 0;
+	width: 100%;
+	
+	height: 85px;
+}
+
+.hdr-top {
+position: absolute;
+background-color: rgb(248, 163, 148);
+top: -35px;
+left: 0px;
+width: 100%;
+height: 70px;
+
+}
+
+.contacts-block {
+	width: 800px;
+	margin-top: 12px;
+
+}
+
+.hdr-bot {
+	position: relative;
+	left: 0;
+	top: 35px;
+	right: 0;
+	background-color: rgb(244, 114, 93);
+	color: rgb(255, 255, 255);
+	height: 50px;
+	
+}
+
+.nav-item.nav-item-top:hover {
+	background-color: rgb(248, 163, 148);
+}
+
+.dropdown-item {
+	margin-left: -17px;
+	width: 277px;
+}
+
+.dropdown-item:hover {
+	background-color: rgb(248, 163, 148);
+}
+
+.dropright:hover {
+	background-color: rgb(248, 163, 148);
+}
+
+.dropdown:focus > .dropdown-menu,
+.dropdown:active > .dropdown-menu,
+.dropdown-menu:hover { 
+    display: block;
+}
+
+.dropdown-menu .second-menu-item {
+	position: relative;
+	left: 240px;
+}
+
+.accordion {
+	margin-top: 85px;
+}
+
+.btn-link {
+	padding-left: 0px;
+	padding-right: 0px;
+	padding-top: 0px;
+    padding-bottom: 16px;
+	border: none;
+	width: 100%;
+}
+
+.btn-link:hover {
+	text-decoration: none;
+}
+
+.top-menu-tab {
+	background: #f2f2f2;
+}
+
+.top-menu-tab:hover {
+	background: rgb(255, 255, 255);
+	color: rgb(244, 114, 93);
+}
+
+.pills-tab {
+	
+	margin-bottom: -32px;
+}
+
+.nav-item-top-menu {
+	position: relative;
+	width: 33.3333333%;
+	border-radius: 0px;
+	— moz-transition: all 1s ease;
+	— webkit-transition: all 1s ease;
+	— o-transition: all 1s ease;
+	transition: all 1s ease;
+}
+
+.scale {
+	— moz-transition: all 1s ease;
+	— webkit-transition: all 1s ease;
+	— o-transition: all 1s ease;
+	transition: all 1s ease;
+
+}
+
+.scale:hover {
+	transform: scale(1.5);
+	
+}
+
+.nav-pills .nav-link {
+	border-radius: 0px;
+	
+}
+
+.nav-item p {
+	margin-bottom: 0;
+}
+
+.nav-link {
+	color: rgb(105 105 105);
+}
+
+.container {
+	position: absolute;
+	height: 100%;
+	width: 100%;
+}
+
+.center-container {
+	position: absolute;
+	left: 400px;
+	height: 100%;
+	width: 1140px;
+}
+
+#carouselExampleIndicators {
+	position: absolute;
+	top:0px;
+}
+
+.grid.center-grid {
+	display: grid;
+	position: absolute;
+	background-color: #f2f2f2;
+	top: 380px;
+	left: -5px;
+	height: 500px;
+	width: 101%;
+	text-align: center;
+	grid-template-columns: 1fr 1fr 1fr;
+}
+
+.center-item {
+	border: 5px solid rgb(255, 255, 255);
+	height: 100%;
+}
+
+.block-text-line {
+	position: relative;
+	bottom: -150px;
+	height: 90px;
+	background-color: rgb(244, 114, 93);
+	color: rgb(255, 255, 255);
+	opacity: 0.9;
+}
+
+.block-text-line h3 {
+	font-weight: bold;
+}
+
+#center-item1 {
+	background-image: url(img/center-img-1.jpg);
+}
+
+#center-item2 {
+	background-image: url(img/center-img-2.jpg);
+}
+
+#center-item3 {
+	background-image: url(img/center-img-3.jpg);
+}
+
+#center-item4 {
+	background-image: url(img/center-img-4.jpg);
+}
+
+#center-item5 {
+	background-image: url(img/center-img-5.jpg);
+}
+
+#center-item6 {
+	background-image: url(img/center-img-6.jpg);
+}
+
+.non-decor:hover {
+	text-decoration: none;
+}
+
+.links-block-container {
+	position: absolute;
+	background-color: #f2f2f2;
+	top: 1080px;
+	width: 1900px;
+	height: 240px;
+}
+
+.grid.links-block {
+	display: grid;
+	position: absolute;
+	height: 100%;
+	width: 100%;
+	grid-template-columns: 1fr 1fr 1fr;
+}
+
+.links-block-item {
+	border: 5px solid rgb(255, 255, 255);
+	background-repeat: no-repeat;
+}
+
+#block-sertificats {
+	background: url(img/link-sert.jpg);
+}
+
+#block-sales {
+	background: url(img/link-sale.jpg);
+}
+
+#block-vk {
+	background: url(img/link-vk.jpg);
+}
+
+.title {
+	position: relative;
+	font-size: 45px;
+	color: rgb(255, 255, 255);
+	margin-bottom: 20px;
+	font-weight: bold;
+	text-align: left;
+	top: 10px;
+	left: 10px;
+	line-height: 1;
+	display: flex;
+}
+
+.links-block-a {
+	position: relative;
+	color: rgb(255, 255, 255);
+	font-weight: bold;
+	font-size: 35px;
+	bottom: -15px;
+	left: 10px;
+}
+
+.links-block-a:hover {
+	color: rgb(255, 255, 255);
+}
+
+#links-block-a-sert {
+	position: relative;
+	top: 60px;
+}
+
+.left-container {
+	position: absolute;
+	left: 0;
+	height: 875px;
+	width: 400px;
+}
+
+.catalog-block {
+	position: absolute;
+	height: 100%;
+	width: 100%;
+}
+
+.catalog {
+	font-size: 29px;
+	color: #000;
+	text-align: center;
+	padding-top: 5px;
+	background-color: rgb(244, 114, 93);
+	color: rgb(255, 255, 255);
+	font-weight: bold;
+	text-transform: uppercase;
+}
+
+.right-container {
+	position: absolute;
+	left: 1540px;
+	height: 875px;
+	width: 400px;
+}
+
+.news-block {
+	position: absolute;
+	height: 100%;
+	width: 100%;
+}
+
+.news {
+	font-size: 29px;
+	color: #000;
+	text-align: center;
+	padding-top: 5px;
+}
+
+.bottom-container {
+	position: absolute;	
+	top: 1330px;
+	width: 1900px;
+}
+.new-arrivals-block {
+	display: grid;
+	grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+	grid-auto-rows: 400px;
+	background-color: rgb(242, 242, 242);
+	
+}
+
+.heading {
+	text-align: center;
+}
+
+.new-arrivals {
+	width: 100%;
+	height: 100px;
+}
+
+.product-card {
+	position: relative;
+	height: 100%;
+	background: rgb(255, 255, 255);
+	border: 10px solid rgb(242, 242, 242);
+	text-align: center;
+}
+
+.card-bot {
+	position: absolute;
+	width: 100%;
+	height: 40px;
+	bottom: 10px;
+	padding-left: 10px;
+	padding-right: 10px;
+}
+
+.card-price {
+	position: relative;
+	height: 100%;
+	width: 50%;
+	background-color: rgb(244, 114, 93);
+}
+
+.flag-img {
+	position: absolute;
+	height: 100%;
+	padding-left: 157.3px;
+	top: 0px;
+
+}
+
+.buy-btn {
+	background-color: rgb(248, 163, 148);
+}
+
+.sert::after {
+	content: none;
+}
+
+.sert:hover::after {
+	content: attr(data-title);
+}
+
+.sert:hover::after {
+    content: attr(data-title); /* Выводим текст */
+    position: absolute; /* Абсолютное позиционирование */
+    left: 20%; top: 30%; /* Положение подсказки */
+    max-width: 300px; 
+    z-index: 1; /* Отображаем подсказку поверх других элементов */
+    background: rgba(255,255,230,0.8); /* Полупрозрачный цвет фона */
+    font-family: Arial, sans-serif; /* Гарнитура шрифта */
+    font-size: 11px; /* Размер текста подсказки */
+    padding: 5px 10px; /* Поля */
+    border: 1px solid #333; /* Параметры рамки */
+}
+
+.product-image {
+	position: relative;
+	height: 250px;
+	width: 200px;
+}
+
+.prdct-img {
+	position: absolute;
+	width: 100%;
+	height: auto;
+	vertical-align: middle;
+	left: 75px;
+	— moz-transition: all 1s ease;
+	— webkit-transition: all 1s ease;
+	— o-transition: all 1s ease;
+	transition: all 1s ease;
+}
+
+.prdct-img:hover {
+	transform: scale(1.5);
+}
+
+.product-h {
+	position: absolute;
+	font-size: 20px;
+	padding-left: 10px;
+	top: 270px;
+	text-align: left;
+}
+
+
+	
