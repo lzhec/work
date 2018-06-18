@@ -10,40 +10,24 @@ class Walking:
 			folder.append(i)
 		return folder
 
-	val = 'G:/git_projects/fileManager/catalog'
+	val = 'G:/git_projects/work/fileManager/catalog'
 	value = getCatalog(val)
+	count = 0
 
-	print(value)
+	#print(value)
 
-	for i, j, k in value:
-		for k, l, m in value:
-			if os.path.dirname(k) == os.path.dirname(i):
-				print(k + ' ' + 'Равны')
-			else: print(k + ' ' + 'Нет')
-
-	#for i in value:
-		#for j in i[2]:
-			#print(i[0] +'/' + j)
-	"""directories=[]
-	files=[]
 	for i in value:
-		for j in i:
-			file = os.listdir(i[0])
-			direct = i[0]
-		files.append(file)
-		directories.append(direct)
-
-		#print(direct)
-		#print(file)
-		for k in direct
-			if os.path.isdir(k):
-				print('Это директория')"""
-
-	"""for item in directories:			
-		for i in files:
-			for j in i:
-				print(item + '---' + j)
-			break"""
-
-	#print(directories)
-	#print(files)
+		print('step')
+		print(i[0])
+		print(i[1])
+		print(i[2])
+		a = i[0]
+		print('step')
+		for j in i[1]:
+			if i[0] == a:
+				print(i[0]+'/'+j)
+			print(i[0])
+			print('++++++++++')
+			for k in i[2]:
+				print(i[0]+'/'+k)
+				print('-------------')

@@ -2,14 +2,16 @@
 {%  load static %}
 {% block content %}
 <div>
-	{% for address, dirs, files in value %}
-		{% for i, j, k in value %}
-				{% if os.path.dirname.i != os.path.dirname.address %}
-					<li>{{i}}</li>
-				{% else %}
-					<li>fgfdgdfg</li>
-				{% endif %}
-
+	{% for i in value %}
+	
+		
+		{% for j in i.1 %}
+			{% if i.0 != a %}
+			{% j = 0 %}
+				<li>
+					{{j}}
+				</li>	
+			{% endif %}
 		{% endfor %}
 	{% endfor %}
 </div>
