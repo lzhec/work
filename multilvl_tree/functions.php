@@ -33,6 +33,8 @@ function get(){
 		$array[$row['owner_id']][] = $row; //сортируем массив по категориям
 	}
 	return $array;
+
+
 }
 
 

@@ -94,9 +94,9 @@ function get($connect){
 		$get['data'][] = $row;
 		sort($get['data']);
 	}
-	
+
 	$get['data'] = json_encode($get['data']);
 	return $get;	
 }
- 
+
 ?>

@@ -18,6 +18,7 @@ $result = get();
 </head>
 	
 <body>
+	<?php echo get()?>
 	<?php echo display($result)?>
 </body>	
 	

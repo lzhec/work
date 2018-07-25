@@ -13,10 +13,11 @@ class Walking:
 	val = 'G:/git_projects/work/fileManager/catalog'
 	value = getCatalog(val)
 	count = 0
+	dirs=[]
 
 	#print(value)
 
-	for i in value:
+	"""for i in value[i]:
 		print('step')
 		print(i[0])
 		print(i[1])
@@ -24,10 +25,19 @@ class Walking:
 		a = i[0]
 		print('step')
 		for j in i[1]:
-			if i[0] == a:
+			if i[0] != a:
 				print(i[0]+'/'+j)
 			print(i[0])
 			print('++++++++++')
 			for k in i[2]:
 				print(i[0]+'/'+k)
-				print('-------------')
+				print('-------------')"""
+
+	
+	for i,j,k in value:
+		print(i)
+
+
+	
+
+

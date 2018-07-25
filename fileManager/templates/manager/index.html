@@ -1,20 +1,73 @@
 {% extends 'wrapper.html' %}
 {%  load static %}
 {% block content %}
-<div>
-	{% for i in value %}
-	
+
+<?php
+    $path = '../';
+    $queue = '';
+
+	function createDir($path = 'G:/git_projects/work/fileManager/catalog')
+	{	
+		if ($handle = opendir($path)) 
+		{
+			echo '<ol class="tree">';
 		
-		{% for j in i.1 %}
-			{% if i.0 != a %}
-			{% j = 0 %}
-				<li>
-					{{j}}
-				</li>	
-			{% endif %}
-		{% endfor %}
-	{% endfor %}
-</div>
+			while (false !== ($file = readdir($handle))) 
+			{ 
+				if (is_dir($path.$file) && $file != '.' && $file !='..')
+					printSubDir($file, $path, $queue);
+				else if ($file != '.' && $file !='..')
+					$queue[] = $file;
+			}
+			
+			printQueue($queue, $path);
+
+			echo '</ol>';
+		}
+	}
+	
+	function printQueue($queue, $path)
+	{
+		foreach ($queue as $file) 
+		{
+			printFile($file, $path);
+		} 
+	}
+	
+	function printFile($file, $path)
+	{
+		echo '<li class="file"><a href="' . $path.$file. ' ">' . $file . '</a></li>';
+	}
+	
+	function printSubDir($dir, $path)
+	{
+		echo '<li class="toggle">' . $dir . '<input type="checkbox">';
+		createDir($path.$dir.'/');
+		echo '</li>';
+	}
+ 
+	createDir($path);
+?>
+	
+
+	<!--{% for i in value %}
+		{% with i.0 as count %}				
+				{% for j in i.1 %}
+					{% if i.0 == val %}
+						<li>
+							{{j}}
+							{% elif i.0 == count %}
+								<ul>
+									<li>{{j}}</li>
+								</ul>
+							
+						</li>	
+					{% endif %}
+				{% endfor %}
+			
+		{% endwith %}
+	{% endfor %}-->
+
 <!--<div class="accordion" id="accordionExample">
 	<div class="card">	
 		<h5 class="mb-0">    	
