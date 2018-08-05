@@ -1,0 +1,29 @@
+{% extends 'wrapper.html' %}
+{% block content %}
+
+    {% if username %}
+        <form action="" id="note-form" method="post">{% csrf_token %}
+            <div class="note-container">
+                <label for="">Добавить заметку</label>
+                {{ form.as_p }}
+                <button class="btn btn-primary">Сохранить</button>
+            </div>
+        </form>
+        <div class="grid notes">
+        {% for note in notes %}
+            <div class="note" style="position: relative; background-color: rgba(251, 248, 228, 0.8);">
+                <strong style="margin: auto 5px; font-size: 15px;">
+                    {{ note.title }}
+                </strong>
+                <p style="margin: auto 5px; font-size: 15px;">
+                    {{ note.text }}
+                </p>
+                <p style="margin: auto 5px; font-size: 10px;">
+                    Опубликовано: {{ note.created|timesince }} назад, {{ note.created|date:"d.n.Y, H:i" }}
+                </p>
+            </div>
+        {% endfor %}
+        </div>
+        {% endif %}
+
+{% endblock %}

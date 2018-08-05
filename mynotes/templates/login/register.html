@@ -1,0 +1,12 @@
+{% extends 'wrapper.html' %}
+{% load static %}
+{% block login %}
+
+<div class="container">
+    <form action="/register/" method="post" class="regform">{% csrf_token %}
+        {{ form }}
+        <button type="submit" class="btn btn-primary">Регистрация</button>
+    </form>
+</div>
+
+{% endblock %}

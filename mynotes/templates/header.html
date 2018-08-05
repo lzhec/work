@@ -1,0 +1,84 @@
+{% load static %}
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" href="#">MyNotes</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+        {% if username %}
+            <li class="nav-item active">
+                <a class="nav-link" href="/logout/">({{ username }}) Выйти <span class="sr-only">(current)</span></a>
+            </li>
+        {% else %}
+            <li class="nav-item active">
+                <a class="nav-link" href="/login/">Войти <span class="sr-only">(current)</span></a>
+            </li>
+        {% endif %}
+      <!--{% if username %}
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              {{ username }}
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <a class="nav-link dropdown-toggle" href="/logout/" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Выйти
+                </a>
+            </div>
+          </li>
+      {% else %}
+        <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="/login/" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Войти
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+
+              <form action="/login/" method="post">{% csrf_token %}
+                <div class="form-group">
+                    <label for="username">Логин</label>
+                    <input type="text" name="username" class="form-control" id="username" placeholder="Логин">
+                </div>
+                <div class="form-group">
+                    <label for="password">Пароль</label>
+                    <input type="password" name="password" class="form-control" id="password" placeholder="Пароль">
+                </div>
+                {% if login_error %}
+                    <label class="error">{{ login_error }}</label>
+                {% endif %}
+                <button type="submit" class="btn btn-primary">Войти</button>
+              </form>
+              <div class="dropdown-divider"></div>-->
+                <!--<form action="" method="post">{% csrf_token %}
+                    {{ formNewUser }}
+                    <a href = "/notes/" class="non-decor">
+                       <button type="submit" class="btn btn-primary">Регистрация</button>
+                    </a>
+                </form>-->
+
+              <!--<form>
+                <div class="form-group">
+                    <label for="exampleInputEmail1">Логин</label>
+                    <input type="text" class="form-control" id="exampleInputLogin2" placeholder="Логин">
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputEmail1">Адрес Email</label>
+                    <input type="email" class="form-control" id="exampleInputEmail" aria-describedby="emailHelp" placeholder="email">
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputPassword1">Пароль</label>
+                    <input type="password" class="form-control" id="exampleInputPassword2" placeholder="Пароль">
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputPassword1">Подтвердите пароль</label>
+                    <input type="password" class="form-control" id="exampleInputPasswordAgain" placeholder="Пароль еще раз">
+                </div>
+                <button type="submit" class="btn btn-primary">Регистрация</button>
+              </form>
+            </div>
+        </li>
+      {% endif %}-->
+    </ul>
+  </div>
+</nav>
