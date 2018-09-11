@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html ng-app="emojiListApp">
+<head>
+	<meta charset="utf-8">
+	<title>Эмодзи</title>
+	<script src="libraries/angular.js"></script>
+	<link rel="stylesheet" href="libraries/bootstrap.css" />
+	<link rel="stylesheet" href="style.css" />
+	<script>
+
+		var emojiListApp = angular.module("emojiListApp", [])
+
+		emojiListApp.controller("emojiListCtrl", function($scope, $http,) {			
+			$http.get("https://api.github.com/emojis").then(function(data) {
+				$scope.emojiesKeys = Object.keys(data.data);
+				$scope.emojiesValues = Object.values(data.data);
+				$scope.repeatData = $scope.emojiesKeys.map(function(value, index) {
+			    return {
+			        data: value,
+			        value: $scope.emojiesValues[index]
+			    }
+				});
+				
+				$scope.class = 'noLiked noDeleted';
+
+				$scope.getLiked = function() {
+					var buttons = document.getElementsByClassName('getLiked');
+					var length = buttons.length;
+
+					for (var i = 0; i < length; i++) {
+						buttons[i].onmouseup = function() {
+							var row = this.parentNode.parentNode.parentNode
+							row.classList.toggle('noLiked');
+							row.classList.toggle('isLiked');
+							
+							if (row.classList.contains('star'))
+								row.classList.add('ng-hide');
+						}
+					}
+				}
+
+				$scope.getDeleted = function() {
+					var buttons = document.getElementsByClassName('getDeleted');
+					var length = buttons.length;
+					
+					for (var i = 0; i < length; i++) {
+						buttons[i].onmouseup = function() {
+							var row = this.parentNode.parentNode.parentNode
+							row.classList.toggle('noDeleted');
+							row.classList.toggle('isDeleted');
+							row.classList.toggle('ng-hide');
+						}
+					}		
+				}
+
+				$scope.showAll = function() {
+					var row = document.getElementsByClassName('tablerow');
+					var length = row.length
+					document.getElementById("title").innerHTML = "Все эмодзи";
+
+					for (var i = 0; i < length; i++) {
+						if (row[i].classList.contains('noDeleted')) {
+							row[i].classList.remove("ng-hide");
+							row[i].classList.remove("star");
+						}
+						else
+							row[i].classList.add('ng-hide');
+					}		
+				}
+
+				$scope.showLiked = function() {
+					var row = document.getElementsByClassName('tablerow');
+					var length = row.length
+					
+					document.getElementById('title').innerHTML = "Любимые эмодзи";
+
+					for (var i = 0; i < length; i++) {
+						if (row[i].classList.contains('isLiked') && !row[i].classList.contains('isDeleted')) {
+							row[i].classList.remove('ng-hide');
+							row[i].classList.add('star');
+						}
+						
+						if (row[i].classList.contains('noLiked') || row[i].classList.contains('isDeleted')) 
+							row[i].classList.add('ng-hide');
+					}		
+				}
+
+				$scope.showDeleted = function() {
+					var row = document.getElementsByClassName('tablerow');
+					var length = row.length;
+					document.getElementById('title').innerHTML = "Удаленные эмодзи";
+
+					for (var i = 0; i < length; i++) {
+						row[i].classList.remove('star');
+						if (row[i].classList.contains('isDeleted'))
+							row[i].classList.remove('ng-hide');
+						else
+							row[i].classList.add('ng-hide');
+					}			
+				}
+			});
+		});	
+	</script>
+
+	<script>
+		window.addEventListener('load', function () {
+
+			if (window.sessionStorage.key0) {
+				var row = document.getElementsByClassName('tablerow');
+				var length = row.length;
+				var title = sessionStorage['title'];
+
+				document.getElementById('title').innerHTML = sessionStorage['title'];
+
+				for (var i = 0; i < length; ++i) {	
+					var cont = sessionStorage['key' + i];
+					cont = cont.split(' ');
+
+					row[i].classList.remove('noDeleted', 'isDeleted', 'noLiked', 'isLiked', 'star', 'ng-hide');
+
+					for (var j = 0, len = cont.length; j < len; ++j ) {
+							row[i].classList.add(cont[j]);		
+					}		
+				}
+			}
+
+			var clicks = document.getElementsByClassName('saveChange');
+
+			for (var i = 0, length = clicks.length; i < length; ++i) {
+				clicks[i].onclick = function() {
+					var selectedChange = getRows('tablerow');
+					var title = document.getElementById('title');
+
+					window.sessionStorage['title'] = title.text;
+
+					for (var j = 0, len = selectedChange.length; j < len; ++j) {
+						window.sessionStorage['key' + j] = selectedChange[j];
+					}
+				}
+			}
+
+			function getRows(name) {
+				var elements = document.getElementsByClassName(name);
+				var elementsArray = [];
+			
+				for (var i = 0, length = elements.length; i < length; i++) {
+					elementsArray.push(elements[i].className);	
+				}
+				
+				return elementsArray;			
+			}
+		});
+	</script>
+</head>
+<body ng-controller="emojiListCtrl">
+	<div class="container">
+		<nav class="navbar navbar-light bg-light justify-content-between" style="margin-top: 20px;">
+  		<a class="navbar-brand" id="title" style="font-size: 30px;">Все эмодзи</a>
+  		<form class="form-inline">
+    		<input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search" ng-model="searchText">
+  		</form>
+		</nav>
+		<div class="wrapper grid">
+			<div>
+				<div class="menu-btns">
+					<button type="button" id="showAll" class="btn btn-primary menu-btn saveChange" ng-click="showAll()">Все</button>
+					<button type="button" id="showLiked" class="btn btn-primary menu-btn saveChange" ng-click="showLiked()">Любимые</button>
+					<button type="button" id="showDeleted" class="btn btn-primary menu-btn saveChange" ng-click="showDeleted()">Удаленные</button>
+				</div>
+			</div>
+			<div>
+				<table class="table table-hover">
+					<thead>
+						<tr>
+							<th>Имя</th>
+							<th>Ссылка</th>
+							<th>Превью</th>
+							<th>Действия</th>
+						</tr>
+					</thead>
+					
+					<tbody>
+						<tr ng-repeat="data in repeatData | filter:{data: searchText}" ng-class="class" class="tablerow" name={{data.data}}>
+							<td style="max-width: 200px;">{{data.data}}</td>
+							<td>
+								<a href={{data.value}} style="margin-left: 150px;">{{data.value}}</a>
+							</td>
+							<td>
+								<img class="emoji-icon" src={{data.value}} alt={{data.data}} style="margin-left: 15px;">
+							</td>
+							<td>
+								<div class="buttons">
+									<button ng-click="getLiked()" class="btn check getLiked saveChange">*</button>
+									<button ng-click="getDeleted()" class="btn check getDeleted saveChange">X</button>
+								</div>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
+</body>
+</html>
