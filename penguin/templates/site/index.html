@@ -1,0 +1,71 @@
+{% extends 'wrapper.html' %}
+{%  load static %}
+{% block content %}
+
+
+
+<div class="center-container">
+    <div class="slogan">
+        <h4>Хочешь красиво отдохнуть?</h4>
+        <h4>Спроси нас как!</h4>
+    </div>
+    <div class = "tour-select">
+        <nav>
+            <div class="nav nav-tabs tour-tabs" id="nav-tab-tour" role="tablist">
+                <a class="nav-item nav-link tour-link active" id="nav-tour-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">Туры</a>
+                <a class="nav-item nav-link tour-link" id="nav-excurse-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false">Экскурсионные туры</a>
+            </div>
+        </nav>
+        <div class="tab-content">
+            <div class="tab-pane fade show active" id="nav-tour" role="tabpanel" aria-labelledby="nav-home-tab">...</div>
+            <div class="tab-pane fade" id="nav-excurse" role="tabpanel" aria-labelledby="nav-profile-tab">...</div>
+        </div>
+    </div>
+
+
+</div>
+
+<div class="links-block-container">
+	<div class="grid links-block">
+		<div class="links-block-item" id="block-sertificats">
+			<div class="title">
+				Подарочные карты и сертификаты
+			</div>
+			<a href="#" class="links-block-a" id="links-block-a-sert">Купить</a>
+		</div>
+		<div class="links-block-item" id="block-sales">
+			<div class="title">
+				Попишись на самые выгодные предложения нашего магазина
+			</div>
+			<a href="#" class="links-block-a">Подписаться</a>
+		</div>
+		<div class="links-block-item"id="block-vk">
+			<div class="title">
+				Вступай в группу ВКонтакте и получи дополнительную скидку
+			</div>
+			<a href="#" class="links-block-a">Вступить</a>
+		</div>
+	</div>
+</div>
+
+<div class="bottom-container">
+    <h1 class="text-center">
+        Новые поступления
+    </h1>
+	<div class="grid products-block new-arrivals-block">
+		<!--{{ products }}--> <!--выводим товары на страницу-->
+		{% for product_image in new_arrivals %}
+            {% include 'site/tour_item.html' %}
+		{% endfor %}
+	</div>
+
+    <h1 class="text-center">
+        Лучшие предложения
+    </h1>
+    <div class="grid products-block best-deals-block">
+		{% for product_image in best_deals %}
+			{% include 'site/tour_item.html' %}
+		{% endfor %}
+	</div>
+</div>
+{% endblock %}

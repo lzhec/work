@@ -1,0 +1,52 @@
+{% extends 'wrapper.html' %}
+{%  load static %}
+{% block content %}
+
+{% include 'accordion.html' %}
+
+    <div class="container">
+        {% for image_item in product.productimage_set.all  %}
+            <div class="product-image-item">
+                <img src="{{ image_item.image.url }}" class="img-responsive">
+            </div>
+        {% endfor %}
+    </div>
+    <div style="position: absolute; top: 300px; left: 700px;">
+        <h1 class="text-center">
+            {{ product.name }}
+        </h1>
+    </div>
+
+    <div id="price-div">
+        <h1 class="" >
+            {{ product.price }} р
+        </h1>
+        <p style="position: absolute; left: 230px; top: 30px;">X</p>
+        <form class="form-inline" id="form-buying-product" action="{% url 'basketAdding' %}">{% csrf_token %}
+            <div class="form-group">
+                <input type="number" class="form-control" id="number-of-products">
+                <button type="submit" class="btn btn-success" id="submit_btn" data-product_id="{{ product.id }}" data-product_name="{{ product.name }}" data-product_price="{{ product.price }}" data-product_img="{{ product.img }}">
+                    {% if product.pre_order %}
+                        предзаказ
+                    {% else %}
+                        купить
+                    {% endif %}
+                </button>
+            </div>
+
+        </form>
+    </div>
+
+    <nav style="position: absolute; top: 400px; left: 700px;">
+        <div class="nav nav-tabs" id="nav-tab" role="tablist">
+            <a class="nav-item nav-link active text-center" id="nav-desc-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-desc" aria-selected="true">Описание</a>
+            <a class="nav-item nav-link text-center" id="nav-char-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-char" aria-selected="false">Характеристики</a>
+            <a class="nav-item nav-link text-center" id="nav-recall-tab" data-toggle="tab" href="#nav-contact" role="tab" aria-controls="nav-recall" aria-selected="false">Отзывы</a>
+        </div>
+    </nav>
+    <div class="tab-content" id="nav-tabContent">
+        <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">{{ product.description }}</div>
+        <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">{{ product.char }}</div>
+        <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">...</div>
+    </div>
+{% endblock %}
