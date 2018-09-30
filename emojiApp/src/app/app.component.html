@@ -1,0 +1,50 @@
+<div class="container">
+    <nav class="navbar navbar-light bg-light justify-content-between" style="margin-top: 20px;">
+      <a class="navbar-brand" id="title" style="font-size: 30px;">Все эмодзи</a>
+      <form class="form-inline">
+        <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search" ([ng-model])="searchText">
+      </form>
+    </nav>
+    <div class="wrapper grid">
+      <div>
+        <div class="menu-btns">
+          <button type="button" id="showAll" class="btn btn-primary menu-btn saveChange" (click)="showAll()">Все</button>
+          <button type="button" id="showLiked" class="btn btn-primary menu-btn saveChange" (click)="showLiked()">Любимые</button>
+          <button type="button" id="showDeleted" class="btn btn-primary menu-btn saveChange" (click)="showDeleted()">Удаленные</button>
+        </div>
+      </div>
+      <div>
+        <table class="table table-hover">
+          <thead>
+            <tr>
+              <th>№№</th>
+              <th>Имя</th>
+              <th>Ссылка</th>
+              <th>Превью</th>
+              <th>Действия</th>
+            </tr>
+          </thead>
+          
+          <tbody>
+            <tr *ngFor="let key of emojiKeys;  let i = index; trackBy: trackByFn" [ngClass]="property" class="tablerow" [id]="i">
+              <td>{{i+1}}</td>  
+              <td style="max-width: 200px;">{{key}}</td>
+              <td>
+                <a href={{list[key]}} style="margin-left: 150px;">{{list[key]}}</a>
+              </td>
+              <td>
+                <img class="emoji-icon" src={{list[key]}} alt={{list[key]}} style="margin-left: 15px;">
+              </td>
+              <td>
+                <div class="buttons">
+                  <button (click)="getLiked(i)" class="btn check getLiked saveChange">*</button>
+                  <button (click)="getDeleted(i)" class="btn check getDeleted saveChange">X</button>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
