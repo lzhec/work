@@ -42,6 +42,6 @@ header ('Content-Type: text/html; charset=utf-8');
 require_once '../app/config.php';
 require_once '../app/functions.php';
 
-connect(HOST,USER,PASS,DATABASE);
+$connect = connect(HOST,USER,PASS,DATABASE);
 $data = fromMap($connect);
 ?>

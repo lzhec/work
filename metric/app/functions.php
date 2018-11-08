@@ -3,9 +3,7 @@
 //подключение к базе данных
 
 function connect($host,$user,$pass,$database){
-
-	global $connect; 
-	$connect = mysqli_connect($host,$user,$pass,$database);	
+	return mysqli_connect($host,$user,$pass,$database);	
 }
 
 

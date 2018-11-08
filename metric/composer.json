@@ -21,7 +21,10 @@
     "autoload": {
         "classmap": [
             "database/seeds",
-            "database/factories"
+            "database/factories",
+            "app/helpers.php",
+            "app/config.php",
+            "app/functions.php"
         ],
         "psr-4": {
             "App\\": "app/"
