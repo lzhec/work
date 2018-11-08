@@ -11,12 +11,12 @@ $(document).ready(function(){
 		hour = (now.getHours() + now.getMinutes()/60).toFixed(2);
 		
 		$.get(
-			'../metric/app/helpers.php',
+			'../app/helpers.php',
 			{coordX: coordX, coordY: coordY}
 		);
 		
 		$.get(
-			'../metric/app/helpers.php',
+			'../app/helpers.php',
 			{hour: hour}
 		);
 	});

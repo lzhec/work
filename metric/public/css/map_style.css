@@ -1,0 +1,40 @@
+*{margin: 0; padding: 0}
+
+.container{
+	position: absolute;
+	width: 100%;
+	height: 100%;
+}
+
+
+#div-container{
+	position: flex;
+	left: 10px;
+	top: 10px;
+}
+
+canvas{
+	position: absolute;
+	background-color: rgba(128, 128, 128, 0.7);
+	z-index: 99;
+	height: auto;
+}
+
+div{
+	display: inline;
+}
+
+#switch{
+	position: absolute;
+	border-radius: 10px;
+	background-color: silver;
+	width:150px;
+	left:1700px;
+	top:10px;
+	z-index: 99;
+}
+
+#switchref{
+	text-decoration: none;
+	color: rgb(255 255 255);
+}

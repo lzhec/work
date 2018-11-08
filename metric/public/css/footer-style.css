@@ -1,0 +1,33 @@
+.footer {
+	background-color: rgb(236, 236, 236);
+	position: absolute;
+	left: 0;
+	bottom: 0;
+	width: 100%;
+	height: 100px;
+	z-index: 3;
+}
+
+.left-text {
+	font-size: 13px;
+	font-family: "OpenSans";
+	color: rgb(135, 142, 147);
+	line-height: 1.846;
+	text-align: left;
+	position: absolute;
+	left: 100px;
+	top: 40px;
+	z-index: 4;
+}
+
+.right-text {
+	font-size: 13px;
+	font-family: "OpenSans";
+	color: rgb(135, 142, 147);
+	line-height: 1.846;
+	text-align: left;
+	position: absolute;
+	right: 100px;
+	top: 40px;
+	z-index: 5;
+}

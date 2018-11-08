@@ -3,24 +3,19 @@
 <html>
 <head>
 	<meta charset="UTF-8"/>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>Карта кликов</title>	
-	<script type="text/javascript" src="jq/jquery-3.3.1.min.js"></script>
-	<link type="text/css" rel="stylesheet" href="static/site_style.css">
-	<link type="text/css" rel="stylesheet" href="static/map_style.css">
-	<link rel="stylesheet" href="static/header-style.css">
-  <link rel="stylesheet" href="static/content-style.css">
-  <link rel="stylesheet" href="static/top-content-style.css">
-  <link rel="stylesheet" href="static/center-content-style.css">
-  <link rel="stylesheet" href="static/bottom-content-style.css">
-  <link rel="stylesheet" href="static/footer-style.css">
-  <link rel="stylesheet" href="static/bg-style.css">
-	<script type="text/javascript">
-  	$(function() {
-  		$('#header').load('site/header.html');
-  		$('#content').load('site/content.html');
-  		$('#footer').load('site/footer.html');
-  	});
-  </script>
+	<script type="text/javascript" src="js/jquery-3.3.1.min.js"></script>
+	<link type="text/css" rel="stylesheet" href="css/site_style.css">
+	<link type="text/css" rel="stylesheet" href="css/map_style.css">
+	<link type="text/css" rel="stylesheet" href="css/header-style.css">
+	<link type="text/css" rel="stylesheet" href="css/content-style.css">
+	<link type="text/css" rel="stylesheet" href="css/top-content-style.css">
+	<link type="text/css" rel="stylesheet" href="css/center-content-style.css">
+	<link type="text/css" rel="stylesheet" href="css/bottom-content-style.css">
+	<link type="text/css" rel="stylesheet" href="css/footer-style.css">
+	<link type="text/css" rel="stylesheet" href="css/bg-style.css">
 </head>
 
 <body>
@@ -29,11 +24,11 @@
 		<canvas id = "mapCanvas" width="1903" height="1570"></canvas> <!-- Размеры канваса выставляются вручную -->
 		
 		<div id = "div-container">
-			<div id="header"></div>
-			<div id="content"></div>
-			<div id="footer"></div>
+			@yield('header')
+			@yield('content')
+			@yield('footer')
 			<button id="switch">
-				<a id="switchref" href="daily_activity_graph.php">
+				<a id="switchref" href="/graph">
 					График суточной активности
 				</a>
 			</button>
@@ -44,9 +39,9 @@
 
 <?php
 header ('Content-Type: text/html; charset=utf-8');
-require_once 'data/config.php';
-require_once 'data/functions.php';
+require_once '../app/config.php';
+require_once '../app/functions.php';
 
 connect(HOST,USER,PASS,DATABASE);
-fromMap($connect);
+$data = fromMap($connect);
 ?>

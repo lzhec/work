@@ -11,5 +11,8 @@
 |
 */
 
-Route::get('/', 'CoordsController@index');
-Route::get('/graph', 'ActivityController@index');
+Route::get('/', function() {
+	return redirect('/map');
+});
+Route::get('/map', 'MapController@index');
+Route::get('/graph', 'GraphController@index');

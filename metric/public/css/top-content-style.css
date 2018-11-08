@@ -1,0 +1,144 @@
+.top-content {
+	position: absolute;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 330px;
+	z-index: 37;
+}
+
+.top-content-text{
+	position: absolute;
+	text-align: center;
+	left: 495px;
+	top: 35px;
+	width: 890px;
+	height: 90px;
+}
+
+.top-awesome {
+	font-size: 36px;
+	font-weight: 900;
+	font-family: "ProximaNovaA";
+	color: rgb(60, 67, 72);
+	line-height: 1;
+}
+
+.sub {
+	font-size: 21px;
+	font-weight: 800;
+	font-family: "ProximaNovaA";
+	color: rgb(0, 143, 213);
+	line-height: 0.857;
+}
+
+.line-container{
+	position: absolute;
+	width: 100%;
+	height: 20px;
+	left: 0;
+	top: 130px;
+}
+
+.arrow {
+	background-image: url("../img/top-content-arrow1.jpg");
+	position: absolute;
+	left: 940px;
+	top: 3px;
+	width: 23px;
+	height: 24px;
+	z-index: 32;
+}
+
+.line1 {
+	background-image: url("../img/top-content-line2.jpg");
+	position: absolute;
+	left: 470px;
+	top: 0;
+	width: 1000px;
+	height: 10px;
+	z-index: 30;
+}
+
+.line2 {
+	background-image: url("../img/top-content-line2.jpg");
+	position: absolute;
+	left: 470px;
+	top: 12px;
+	width: 1000px;
+	height: 10px;
+	z-index: 31;
+}
+
+.form{
+	position: absolute;
+	width: 100%;
+	height: 50px;
+	left: 0;
+	top: 170px;
+}
+
+.input {
+	border-style: solid;
+	border-width: 1px;
+	border-color: rgb(215, 223, 229);
+	border-radius: 3px;
+	background-color: rgb(240, 245, 248);
+	position: absolute;
+	left: 690px;
+	top: 0;
+	width: 348px;
+	height: 49px;
+	z-index: 28;
+}
+
+.enter_email {
+	font-size: 14px;
+	font-family: "ProximaNovaA";
+	color: rgb(132, 133, 133);
+	line-height: 1.286;
+	text-align: left;
+	position: absolute;
+	left: 700px;
+	top: 30%;
+	z-index: 31;
+}
+
+.top-content-btn_bg {
+	border-style: solid;
+	border-width: 1px;
+	border-color: rgb(215, 223, 229);
+	border-radius: 10px;
+	background-color: rgb(245, 246, 247);
+	position: absolute;
+	left: 1050px;
+	top: 0;
+	width: 137px;
+	height: 49px;
+	z-index: 29;
+}
+
+.top-content-btn {
+	border-radius: 10px;
+	background-color: rgb(154, 205, 50);
+	position: absolute;
+	left: 1054.5px;
+	top: 4px;
+	width: 127px;
+	height: 40px;
+	z-index: 35;
+}
+
+.signup{
+	font-size: 18px;
+	font-family: "ProximaNovaA";
+	color: rgb(255, 255, 255);
+	font-weight: bold;
+	line-height: 1;
+	text-align: center;
+	text-shadow: 0.5px 0.866px 0px rgba(100, 140, 59, 0.75);
+	position: absolute;
+	left: 1087px;
+	top: 15px;
+	z-index: 36;
+}
