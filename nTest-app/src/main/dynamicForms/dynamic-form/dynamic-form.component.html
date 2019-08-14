@@ -1,0 +1,35 @@
+<h3>
+	<div [ngSwitch]='operation'>
+		<span *ngSwitchCase="'read'">Reading panel</span>
+		<span *ngSwitchCase="'create'">Adding panel</span>
+		<span *ngSwitchCase="'edit'">Editing panel</span>
+	</div>
+</h3>
+<div>
+	<form (ngSubmit)='onSubmit()' [formGroup]='form' [ngClass]='flexClass'>
+		<div *ngFor='let field of vmDefinition'>
+			<main-dynamic-field [field]='field' [form]='form' [operation]='operation' [submitted]='submitted'></main-dynamic-field>
+		</div>
+		<div *ngIf='errorMessage' class='alert alert-danger'>{{errorMessage}}</div>
+		<!--div *ngIf='!operation'>
+			<button type='button' (click)='onSearch()' class="btn btn-secondary">Search</button>				
+		</div-->
+		<div *ngIf='status != "waiting"'>
+			<div *ngIf="operation === 'read'">
+				<button type='button' (click)='onBack()' class="btn btn-primary">Back</button>
+				<button type='button' (click)='onEdit()'class="btn btn-secondary">Edit</button>
+			</div>
+			<div *ngIf="operation === 'edit'">
+				<button type='button' (click)='onCancel()' class="btn btn-primary">Cancel</button>
+				<button type='button' (click)='onSave()'class="btn btn-secondary">Save</button>
+			</div>
+			<div *ngIf="operation === 'create'">
+				<button type='button' (click)='onBack()' class="btn btn-primary">Back</button>
+				<button type='button' (click)='onCreate()'class="btn btn-secondary">Create</button>
+			</div>
+		</div>
+		<div *ngIf='status === "waiting" && operation'>
+			Waiting...
+		</div>
+	</form>
+</div>

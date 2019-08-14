@@ -1,0 +1,4 @@
+<div *ngIf="card">
+  <main-dynamic-form [vm]='card' [vmDefinition]='cardDefinitionInput' [operation]='operation' [errorMessage]='errorMessage' (update)='updateCard($event)' (create)='createCard($event)'>
+  </main-dynamic-form>
+</div>
