@@ -1,0 +1,15 @@
+<div *screenLarge class="title-bar">
+	<div class="menu-area">
+		<spa-icon-bar [showIcons]='flagForIcons'></spa-icon-bar>
+		<!--main-menu *ngIf='!menuService.isVertical'></main-menu-->
+	</div>
+</div>
+<div *screenSmall class="title-bar-small">
+	<div class="burger-menu">
+		<a><img src="../../assets/img/menu.png"></a>
+	</div>
+	<spa-icon-bar [showIcons]='!flagForIcons'></spa-icon-bar>
+	<div class='small-logo'>
+		<img src="" alt="">
+	</div>
+</div>

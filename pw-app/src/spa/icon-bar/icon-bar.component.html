@@ -1,0 +1,14 @@
+<div *ngIf='showIcons'>
+	<a *ngFor='let icon of spaConfigService.socialLinks' [href]="icon.url" [title]='icon.alt' target='blank'>
+		<img class='top-img' [src]="icon.imgFile" [alt]="icon.alt">
+	</a>
+</div>
+<div [ngClass]='{"forSmall" : !showIcons}' *ngIf='spaConfigService.showUserControls'>
+	<span *ngIf ='!showLoader'>{{username}}</span>
+	<span *ngIf ='!showLoader'>balance: {{balance | async}} PW</span>
+	<div>		
+		<button *ngIf='!showLoader' class='btn btn-sm btn-warning' (click)='signOut()'>Sign Out</button>
+	</div>	
+	<img *ngIf='showLoader' src="../../assets/img/loaderOut.gif">
+</div>
+

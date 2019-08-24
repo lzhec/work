@@ -1,0 +1,28 @@
+<h3>
+	<div [ngSwitch]='operation'>
+		<span *ngSwitchCase="'read'">Transaction details</span>
+		<span *ngSwitchCase="'create'">New transaction</span>		
+		<span *ngSwitchCase="'repeat'">New transaction</span>		
+	</div>
+</h3>
+<div>
+	<form (ngSubmit)='onSubmit()' [formGroup]='form' [ngClass]='flexClass'>
+		<div *ngFor='let field of vmDefinition'>
+			<spa-transaction-field [field]='field' [form]='form' [operation]='operation' [submitted]='submitted'></spa-transaction-field>
+		</div>
+		<div *ngIf='errorMessage' class='alert alert-danger'>{{errorMessage}}</div>		
+		<div *ngIf='status != "waiting"'>
+			<div *ngIf="operation === 'read'">
+				<button type='button' (click)='onBack()' class="btn btn-primary">Back</button>				
+				<button type='button' (click)='onRepeat()' class="btn btn-primary">Repeat this transaction</button>
+			</div>			
+			<div *ngIf="operation === 'create' || operation === 'repeat'">
+				<button type='button' (click)='onBack()' class="btn btn-primary">Back</button>
+				<button type='button' (click)='onCreate()'class="btn btn-secondary">Create</button>
+			</div>
+		</div>
+		<div *ngIf='status === "waiting" && operation'>
+			Waiting...
+		</div>
+	</form>
+</div>

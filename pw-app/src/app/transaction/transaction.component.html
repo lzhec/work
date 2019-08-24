@@ -1,0 +1,4 @@
+<div *ngIf="transaction">
+  <spa-transaction-form [vm]='transaction' [vmDefinition]='transactionDefinitionInput' [operation]='operation' [errorMessage]='errorMessage' (repeat)='createTransaction($event)' (create)='createTransaction($event)'>
+  </spa-transaction-form>
+</div>
