@@ -25,7 +25,7 @@ export class HomeComponent implements OnInit {
 
   constructor(private router: Router, private appDataService: AppDataService, private location: Location) {
       appDataService.getTransactions().subscribe((data) => {
-        this.TransactionList = data
+        this.TransactionList = data.slice().reverse()
       })
   }
 
