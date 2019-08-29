@@ -23,6 +23,11 @@ export class UserService implements UserApi {
   	return this.http.post(this.url + '/sessions/create', body).pipe(delay(2000), map((response: Response) => {
       if (response.hasOwnProperty('id_token')) {
         this.token = Object.values(response)[0]
+        this.getUser().subscribe((data) => {
+          console.log(data)
+          localStorage.setItem('user', data.name)
+          localStorage.setItem('balance', data.balance)
+        })       
         localStorage.setItem('token', this.token)        
         this.isAuthenticated = true
       } else {
@@ -51,6 +56,10 @@ export class UserService implements UserApi {
   }
 
   getUser(): Observable<any> {
+    this.isAuthenticated = true
+    if (!this.token) {
+      this.token = localStorage.getItem('token')
+    }
     const options = {
       headers: new HttpHeaders({
         'Content-Type':  'application/json',
@@ -58,11 +67,7 @@ export class UserService implements UserApi {
       })
     }  	  	
     return this.http.get(this.url + '/api/protected/user-info', options).pipe(map((data) => {        
-      return Object.values(data)[0]      
-      /*localStorage.setItem('userId', x.id)
-      localStorage.setItem('username', x.name)
-      localStorage.setItem('userEmail', x.email)
-      localStorage.setItem('userBalance', x.balance)*/
+      return Object.values(data)[0]            
     }))
   }
 }

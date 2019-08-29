@@ -13,7 +13,9 @@ export class SignInComponent implements OnInit {
 	submitting = false
   formError: string
 
-  constructor(private userApi: UserApi, private userService: UserService, private router: Router) { }
+  constructor(private userApi: UserApi, private userService: UserService, private router: Router) {
+    
+  }
 
   onSubmit(signInForm: NgForm): void {
     if (signInForm.valid) {
@@ -32,6 +34,13 @@ export class SignInComponent implements OnInit {
   }
 
   ngOnInit() {
+    if (localStorage.getItem('token')) {
+      this.submitting = true
+      this.formError = null
+      this.userService.getUser().subscribe((data) => console.log(data))
+      this.router.navigate(['/auth/home'])
+    }
+
   }
 
 }

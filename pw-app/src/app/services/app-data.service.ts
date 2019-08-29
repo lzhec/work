@@ -35,7 +35,7 @@ export class AppDataService {
   createTransaction(newTransaction: Transaction): Observable<any> {
   	const body = {
   		name: newTransaction.username,
-  		amount: newTransaction.amount
+  		amount: Math.abs(newTransaction.amount)
   	}
   	const options = {
       headers: new HttpHeaders({
@@ -43,10 +43,12 @@ export class AppDataService {
         'Authorization': 'Bearer ' + localStorage.getItem('token')
       })
     }
-
-    return this.http.post(this.url + '/api/protected/transactions', body, options).pipe(delay(2000), map((data) => {   	
-      return this.setSubject(Object.values(data)[0].balance) 
-    }))
+    if (newTransaction.username != localStorage.getItem('user') && newTransaction.amount <= +localStorage.getItem('balance')) {
+	    return this.http.post(this.url + '/api/protected/transactions', body, options).pipe(delay(2000), map((data) => {
+	    	localStorage.setItem('balance', Object.values(data)[0].balance)   	
+	      return this.setSubject(Object.values(data)[0].balance) 
+	    })) 
+    } else return throwError('ERROR')
   }
 
   searchTransaction(term: any): Observable<any> {  	

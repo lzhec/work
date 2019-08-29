@@ -10,7 +10,7 @@
 		</div>
 		<div *ngSwitchCase='"number"' class='form-group'>
 			<label [for]="field.key">{{field.label}}</label>
-			<input type='number' min='1' class="form-control" autocomplete="off" [formControlName]='field.key' [id]='field.key' [readonly]='operation ==="read" || field.isId'>
+			<input type='number' min='0' class="form-control" autocomplete="off" [formControlName]='field.key' [id]='field.key' [readonly]='operation ==="read" || field.isId'>
 		</div>
 		<div *ngIf='form.get(field.key).hasError("required") && (submitted || form.get(field.key).touched)' class='alert alert-danger'>
 			{{field.label}} is required
