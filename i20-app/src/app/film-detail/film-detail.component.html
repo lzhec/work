@@ -1,0 +1,11 @@
+<h3>
+	{{film.title}}
+</h3>
+<div>
+	<ul *ngFor='let i of film | keyvalue'>
+		<li>
+			<span>{{i.key}}: {{i.value}}</span>
+		</li>
+	</ul>
+	<button type='button' (click)='onBack()' class="btn btn-primary">Back</button>
+</div>

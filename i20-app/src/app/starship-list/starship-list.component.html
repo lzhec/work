@@ -1,0 +1,30 @@
+<h3>Starships</h3>
+<input type="text" (keyup)='searchShip($event)'>
+<div *ngIf="errorMessage" class='alert alert-danger'>
+  {{errorMessage}}
+</div>
+<div>
+<ul *ngIf='!film'>
+	<li *ngFor='let item of pageOfItems'>
+		<a (click)='showShipDetail(item.url)'>{{item.name}}</a>	
+	</li>	
+</ul>
+<ul *ngIf='film'>
+	<li *ngFor='let item of pageOfItems'>
+		<a (click)='showShipDetail(item.url)'>{{item.name}}</a>	
+	</li>
+</ul>
+</div>
+<div>
+	<button class="btn-sm" (click)='getAll()'>All</button>
+	<button class="btn-sm" (click)='getFilm(1)'>Episode 1</button>			
+	<button class="btn-sm" (click)='getFilm(2)'>Episode 2</button>			
+	<button class="btn-sm" (click)='getFilm(3)'>Episode 3</button>			
+	<button class="btn-sm" (click)='getFilm(4)'>Episode 4</button>			
+	<button class="btn-sm" (click)='getFilm(5)'>Episode 5</button>			
+	<button class="btn-sm" (click)='getFilm(6)'>Episode 6</button>			
+	<button class="btn-sm" (click)='getFilm(7)'>Episode 7</button>			
+</div>
+<div class="card-footer pb-0 pt-3">
+  <jw-pagination [items]="items" (changePage)="onChangePage($event)"></jw-pagination>
+</div>
