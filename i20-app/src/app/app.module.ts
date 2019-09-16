@@ -15,6 +15,7 @@ import { FilmDetailComponent } from './film-detail/film-detail.component';
 import { StarshipDetailComponent } from './starship-detail/starship-detail.component';
 import { HeroDetailComponent } from './hero-detail/hero-detail.component';
 import { JwPaginationComponent } from 'jw-angular-pagination';
+import { AppDataService } from './services/app-data.service';
 
 
 @NgModule({
@@ -37,7 +38,7 @@ import { JwPaginationComponent } from 'jw-angular-pagination';
     FormsModule,
     SpaModule
   ],
-  providers: [],
+  providers: [AppDataService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

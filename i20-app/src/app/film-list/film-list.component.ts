@@ -19,7 +19,7 @@ export class FilmListComponent implements OnInit {
   constructor(private router: Router, private appDataService: AppDataService) { }
 
   async ngOnInit() {
-    this.items = await this.appDataService.getItems('films')
+    this.items = await this.appDataService.getItems('films', '')
 
     if (this.filteredItems) {
       this.items = this.filteredItems
@@ -48,7 +48,7 @@ export class FilmListComponent implements OnInit {
       check = true
     }
 
-    this.appDataService.searchItem(event, list, check).subscribe(success =>
+    this.appDataService.searchItems(event, list, check).subscribe(success =>
       this.items = success, 
       error => this.errorMessage = 'No items matched your search')
   }

@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AppDataService } from '../services/app-data.service';
+import { FieldInput } from '../../spa/dynamicForms/field-interface';
+import { Hero } from '../services/hero-interface';
 
 @Component({
   selector: 'app-hero-list',
@@ -8,24 +10,84 @@ import { AppDataService } from '../services/app-data.service';
   styleUrls: ['./hero-list.component.sass']
 })
 export class HeroListComponent implements OnInit {
-	HeroList: any
-  items: any
-  filteredItems: any
+	HeroList: Array<Hero>
+  items: Array<Hero>
+  filteredItems: Array<Hero>
+  hero: Hero
+  heroDefinitionInput: Array<FieldInput> = [
+    {
+      key: 'species',
+      type: 'Array<string> & url',
+      isId: false,
+      label: 'Race'
+    },
+    {
+      key: 'name',
+      type: 'string',
+      isId: false,
+      label: 'Сharacter name'
+    },
+    {
+      key: 'hair_color',
+      type: 'Array<string>',
+      isId: false,
+      label: 'Сharacter hairs color'
+    },
+    {
+      key: 'eye_color',
+      type: 'Array<string>',
+      isId: false,
+      label: 'Сharacter eyes color'
+    },
+    {
+      key: 'skin_color',
+      type: 'Array<string>',
+      isId: false,
+      label: 'Сharacter skin color'
+    },    
+    {
+      key: 'homeworld',
+      type: 'Array<string> & url',
+      isId: false,
+      label: 'Homeworld'
+    },
+    
+    {
+      key: 'vehicles',
+      type: 'Array<string> & url',
+      isId: false,
+      label: 'Transport of character'
+    },
+    {
+      key: 'starships',
+      type: 'Array<string> & url',
+      isId: false,
+      label: 'Starships of character'
+    },
+    {
+      key: 'films',
+      type: 'Array<string> & url',
+      isId: false,
+      label: 'Episodes'
+    }
+  ]
   pageOfItems: any
   gender: string
   switch: string
   errorMessage: string
+  status = false
   
   constructor(private router: Router, private appDataService: AppDataService) { }
 
   async ngOnInit() {
-    this.items = await this.appDataService.getItems('people')
+    this.items = await this.appDataService.getItems('people', '')
 
     if (this.filteredItems) {
       this.items = this.filteredItems
     }
     
-    this.HeroList = this.items    
+    this.HeroList = this.items
+    this.appDataService.setSubject(this.HeroList)
   }
 
   onChangePage(pageOfItems: Array<any>) {        
@@ -48,9 +110,18 @@ export class HeroListComponent implements OnInit {
       check = true
     }
 
-    this.appDataService.searchItem(event, list, check).subscribe(success =>
+    this.appDataService.searchItems(event, list, check).subscribe(success =>
       this.items = success, 
       error => this.errorMessage = 'No items matched your search')
+  }
+
+  searchItem(formGroup) {
+    this.items = this.appDataService.searchItem(formGroup.value)
+    this.status = true
+  }
+
+  changeStatus() {
+    this.status = false
   }
 
   getAll() {

@@ -1,0 +1,28 @@
+<div [formGroup]='form'>
+	<div [ngSwitch]='field.type'>
+		<div *ngSwitchCase='"string"' class='form-group'>
+			<label [for]="field.key">{{field.label}}</label>
+			<input type='text' class="form-control" autocomplete="off" [formControlName]='field.key' [id]='field.key'>
+		</div>
+		<div *ngSwitchCase='"number"' class='form-group'>
+			<label [for]="field.key">{{field.label}}</label>
+			<input type='number' min='0' class="form-control" autocomplete="off" [formControlName]='field.key' [id]='field.key'>
+		</div>
+		<div *ngSwitchCase='"Array<string>"' class='form-group'>
+			<div style='display: grid;'>
+				<label [for]="field.key">{{field.label}}</label>
+				<select (focus)='changeOption($event, field.key)' [formControlName]='field.key'>
+					<option *ngFor='let item of options' [value]='item.name'>{{item.name}}</option>
+				</select>
+			</div>
+		</div>
+		<div *ngSwitchCase='"Array<string> & url"' class='form-group'>
+			<div style='display: grid;'>
+				<label [for]="field.key">{{field.label}}</label>
+				<select (focus)='changeOption($event, field.key)' [formControlName]='field.key'>
+					<option *ngFor='let item of options' [value]='item.url'>{{item.name}}</option>
+				</select>
+			</div>
+		</div>
+	</div>
+</div>

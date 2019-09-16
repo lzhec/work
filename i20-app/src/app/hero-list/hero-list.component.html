@@ -1,25 +1,37 @@
-<h3>Heroes</h3>
-<input type="text" (keyup)='searchHero($event)'>
-<div *ngIf="errorMessage" class='alert alert-danger'>
-  {{errorMessage}}
-</div>
 <div>
-<ul *ngIf='!gender'>
-	<li *ngFor='let item of pageOfItems'>
-		<a (click)='showHeroDetail(item.url)'>{{item.name}}</a>	
-	</li>	
-</ul>
-<ul *ngIf='gender'>
-	<li *ngFor='let item of pageOfItems'>
-		<a (click)='showHeroDetail(item.url)'>{{item.name}}</a>	
-	</li>
-</ul>
+	<div>
+		<div>
+			<h3>Heroes</h3>
+			<input type="text" (keyup)='searchHero($event)'>
+			<div *ngIf="errorMessage" class='alert alert-danger'>
+			  {{errorMessage}}
+			</div>
+		</div>
+	</div>
+	<div>
+	<ul *ngIf='!gender'>
+		<li *ngFor='let item of pageOfItems'>
+			<a (click)='showHeroDetail(item.url)'>{{item.name}}</a>	
+		</li>	
+	</ul>
+	<ul *ngIf='gender'>
+		<li *ngFor='let item of pageOfItems'>
+			<a (click)='showHeroDetail(item.url)'>{{item.name}}</a>	
+		</li>
+	</ul>
+	</div>
+	<div>
+		<button class="btn-sm" (click)='getAll()'>All</button>
+		<button *ngIf='!gender' class="btn-sm" (click)='getGender()'>Male</button>	
+		<button *ngIf='gender' class="btn-sm" (click)='getGender()'>{{switch}}</button>	
+	</div>
+	<div class="card-footer pb-0 pt-3">
+	  <jw-pagination [items]="items" (changePage)="onChangePage($event)"></jw-pagination>
+	</div>
 </div>
-<div>
-	<button class="btn-sm" (click)='getAll()'>All</button>
-	<button *ngIf='!gender' class="btn-sm" (click)='getGender()'>Male</button>	
-	<button *ngIf='gender' class="btn-sm" (click)='getGender()'>{{switch}}</button>	
+<div *ngIf='!status' class='search-form'>
+	<spa-dynamic-form [vm]='hero' [vmDefinition]='heroDefinitionInput' [errorMessage]='errorMessage' (search)='searchItem($event)' (getOptions)='getDifferentOptions($event)'></spa-dynamic-form>
 </div>
-<div class="card-footer pb-0 pt-3">
-  <jw-pagination [items]="items" (changePage)="onChangePage($event)"></jw-pagination>
+<div *ngIf='status'>
+	<button class="btn btn-primary" (click)='changeStatus()'>New search</button>
 </div>
